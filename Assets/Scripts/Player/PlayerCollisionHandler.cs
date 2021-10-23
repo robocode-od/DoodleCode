@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerCollisionHandler : MonoBehaviour
 {
     private PlayerMovement _movement;
+    private int damage = 1;
+
     private void Start()
     {
         _movement = GetComponent<PlayerMovement>();
@@ -16,7 +18,10 @@ public class PlayerCollisionHandler : MonoBehaviour
             if (_movement.GetVelocity().y <= 0)
             {
                 _movement.Jump();
+                platform.Hit(damage);
             }
         }
     }
+
+
 }

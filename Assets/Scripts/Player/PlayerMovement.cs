@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _jumpStrenght = 10f;
     [SerializeField] private float _sideSpeed = 5f;
+    [SerializeField] private Vector2 _horizontalRange;
 
     private Rigidbody2D _rigidbody;
 
@@ -14,9 +15,26 @@ public class PlayerMovement : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
     }
+
+    private void Update()
+    {
+        if(transform.position.x < _horizontalRange.x)
+        {
+            transform.position = new Vector2(_horizontalRange.y, transform.position.y);
+        }
+        if (transform.position.x > _horizontalRange.y)
+        {
+            transform.position = new Vector2(_horizontalRange.x, transform.position.y);
+        }
+    }
+
     public void Jump()
     {
-        _rigidbody.AddForce(Vector2.up * _jumpStrenght, ForceMode2D.Impulse);
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpStrenght);
+    }
+    public void Jump(float multiplier)
+    {
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpStrenght * multiplier);
     }
     public void Move(Vector2 direction)
     {
