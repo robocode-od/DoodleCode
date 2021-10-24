@@ -25,4 +25,11 @@ public class PlatformGenerator : MonoBehaviour
             Instantiate(_spawnObject, _spawnPoint, Quaternion.identity);
         }
     }
+
+    public void Replace(GameObject platform)
+    {
+        _spawnPoint.x = Random.Range(_horizontalPositionRange.x, _horizontalPositionRange.y);
+        _spawnPoint.y += Random.Range(_vecticalPositionRange.x, _vecticalPositionRange.y);
+        platform.transform.position = _spawnPoint;
+    }
 }
