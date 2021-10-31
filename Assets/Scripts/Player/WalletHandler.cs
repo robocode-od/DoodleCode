@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class WalletHandler : MonoBehaviour
 {
-    private int _amount;
+    private int _coinsAmount;
 
     private void Start()
     {
-        _amount = 0;
+        _coinsAmount = 0;
     }
 
     public void AddCoin()
     {
-        _amount++;
+        _coinsAmount++;
     }
 }
